@@ -5,8 +5,8 @@ import { useUser, SignIn, useAuth, CreateOrganization } from "@clerk/react";
 import Navbar from "../components/Navbar";
 import { loadTheme } from "../features/themeSlice";
 import Sidebar from "../components/Sidebar";
-import Outlet from "../components/Outlet";
 import { fetchWorkspaces } from "../features/workspaceSlice";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const { loading, workspaces } = useSelector((state) => state.workspace);
