@@ -9,7 +9,7 @@ import { fetchWorkspaces } from "../features/workspaceSlice";
 import { Outlet } from "react-router-dom";
 
 const Layout = () => {
-  const { loading, workspaces } = useSelector((state) => state.workspace);
+  const { loading, workspaces, hasFetched } = useSelector((state) => state.workspace); // 👈 add hasFetched
   const dispatch = useDispatch();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const { user, isLoaded } = useUser();
@@ -20,10 +20,19 @@ const Layout = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (isLoaded && user && workspaces.length === 0) {
+    if (isLoaded && user && !hasFetched && !loading) { // 👈 use hasFetched instead of workspaces.length
       dispatch(fetchWorkspaces({ getToken }));
     }
-  }, [user, isLoaded, dispatch, getToken, workspaces.length]);
+  }, [user, isLoaded, hasFetched, loading, dispatch, getToken]);
+
+  // Not logged in
+  if (!isLoaded || (!user && !isLoaded)) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-white dark:bg-zinc-950">
+        <SignIn />
+      </div>
+    );
+  }
 
   if (!user) {
     return (
@@ -33,13 +42,17 @@ const Layout = () => {
     );
   }
 
-  if (loading) {
-    <div className="flex items-center justify-center h-screen bg-white dark:bg-zinc-950">
-      <Loader2 className="size-7 text-sky-500 animate-spin" />
-    </div>;
+  // Show spinner while fetching — NOTE THE return KEYWORD 👇
+  if (loading || !hasFetched) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-white dark:bg-zinc-950">
+        <Loader2 className="size-7 text-sky-500 animate-spin" />
+      </div>
+    );
   }
 
-  if (user && workspaces.length === 0) {
+  // Only show CreateOrganization AFTER fetch is complete and truly no workspaces
+  if (hasFetched && !loading && workspaces.length === 0) {
     return (
       <div className="min-h-screen flex justify-center items-center">
         <CreateOrganization />
@@ -49,15 +62,9 @@ const Layout = () => {
 
   return (
     <div className="flex bg-white dark:bg-zinc-950 text-gray-900 dark:text-slate-100">
-      <Sidebar
-        isSidebarOpen={isSidebarOpen}
-        setIsSidebarOpen={setIsSidebarOpen}
-      />
+      <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
       <div className="flex-1 flex flex-col h-screen">
-        <Navbar
-          isSidebarOpen={isSidebarOpen}
-          setIsSidebarOpen={setIsSidebarOpen}
-        />
+        <Navbar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
         <div className="flex-1 h-full p-6 xl:p-10 xl:px-16 overflow-y-scroll">
           <Outlet />
         </div>

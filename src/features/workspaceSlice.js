@@ -20,6 +20,7 @@ const initialState = {
   workspaces: [],
   currentWorkspace: null,
   loading: false,
+   hasFetched: false,  // 👈 add this
 };
 
 const workspaceSlice = createSlice({
@@ -153,6 +154,7 @@ const workspaceSlice = createSlice({
     });
     builder.addCase(fetchWorkspaces.fulfilled, (state, action) => {
       state.workspaces = action.payload;
+      state.hasFetched = true;  // 👈 add this
       if (action.payload.length > 0) {
         const localStorageCurrentWorkspaceId =
           localStorage.getItem("currentWorkspaceId");
@@ -173,6 +175,7 @@ const workspaceSlice = createSlice({
     });
     builder.addCase(fetchWorkspaces.rejected, (state) => {
       state.loading = false;
+       state.hasFetched = true;  // 👈 add this
     });
   },
 });
