@@ -1,12 +1,12 @@
 import { Loader2 } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useUser, SignIn, useAuth, CreateOrganization } from "@clerk/react";
 import Navbar from "../components/Navbar";
-import { loadTheme } from "../features/themeSlice";
 import Sidebar from "../components/Sidebar";
 import { fetchWorkspaces } from "../features/workspaceSlice";
 import { Outlet } from "react-router-dom";
+import { loadTheme } from "../features/themeSlice";
 
 const Layout = () => {
   const { loading, workspaces, hasFetched } = useSelector((state) => state.workspace); // 👈 add hasFetched
@@ -16,6 +16,7 @@ const Layout = () => {
   const { getToken } = useAuth();
 
   useEffect(() => {
+    console.log("dispatching loadTheme");
     dispatch(loadTheme());
   }, [dispatch]);
 
