@@ -1,16 +1,218 @@
-# React + Vite
+# TaskTribe - Project Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+````md
+#  TaskTribe - Project Management Application
 
-Currently, two official plugins are available:
+TaskTribe is a modern full-stack project management web application built with the PERN stack and Clerk authentication.
+It helps teams manage workspaces, projects, tasks, and team collaboration efficiently.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🌐 Live Demo
 
-## React Compiler
+### Frontend
+🔗 https://tasktribeapp.vercel.app
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+#  Features
 
-## Expanding the ESLint configuration
+## 🔐 Authentication & Authorization
+- Clerk Authentication
+- Secure Login & Signup
+- Organization-based Workspace System
+- Role-based Access (Admin / Member)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👥 Team Management
+- Invite members via email
+- Workspace member management
+- Organization sync with Clerk
+- Team collaboration
+
+## 📁 Workspace Management
+- Create workspaces
+- Update workspace details
+- Delete workspaces
+- Multiple project support
+
+## 📌 Project Management
+- Create projects
+- Project overview dashboard
+- Analytics & statistics
+- Project calendar
+- Project settings
+
+## ✅ Task Management
+- Create tasks
+- Assign members
+- Track task progress
+- Task details page
+- My tasks sidebar
+
+## 📊 Dashboard & Analytics
+- Task summaries
+- Recent activity
+- Project analytics
+- Team statistics
+
+## 🌙 Modern UI
+- Responsive design
+- Dark / Light mode
+- Beautiful TailwindCSS UI
+- Mobile-friendly layout
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+- React 19
+- Vite
+- Tailwind CSS
+- Redux Toolkit
+- React Router DOM
+- Axios
+- Recharts
+- Lucide React
+- React Hot Toast
+
+## Backend
+- Node.js
+- Express.js
+- PostgreSQL
+- Prisma ORM
+- Inngest
+- Clerk Authentication
+
+## Deployment
+- Frontend: Vercel
+- Backend: Vercel
+- Database: Neon PostgreSQL
+
+---
+
+# 📂 Project Structure
+
+## Frontend Structure
+
+```bash
+src/
+│
+├── app/
+├── assets/
+├── components/
+├── configs/
+├── features/
+├── pages/
+│
+├── App.jsx
+├── main.jsx
+└── index.css
+````
+
+---
+
+# ⚙️ Installation & Setup
+
+## 1️⃣ Clone Repository
+
+```bash
+git clone https://github.com/your-username/tasktribe_app.git
+cd tasktribe_app
+```
+
+---
+
+## 2️⃣ Install Dependencies
+
+```bash
+npm install
+```
+
+---
+
+## 3️⃣ Setup Environment Variables
+
+Create a `.env` file:
+
+```env
+VITE_CLERK_PUBLISHABLE_KEY=your_clerk_key
+VITE_BASEURL=your_backend_url
+```
+
+---
+
+## 4️⃣ Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+# 🔄 Inngest Integration
+
+TaskTribe uses Inngest for background event handling and synchronization.
+
+### Used For:
+
+* User sync from Clerk
+* Workspace sync
+* Member synchronization
+* Organization event handling
+
+---
+
+# 📸 Main Pages
+
+* Dashboard
+* Projects
+* Project Details
+* Team Management
+* Task Details
+
+---
+
+# 🚀 Deployment
+
+## Frontend Deployment
+
+Deployed on Vercel.
+
+## Backend Deployment
+
+Express server deployed on Vercel.
+
+## Database
+
+Hosted on Neon PostgreSQL.
+
+---
+
+# 📦 Available Scripts
+
+```bash
+npm run dev
+npm run build
+npm run preview
+npm run lint
+```
+
+---
+
+# 👨‍💻 Author
+
+### Jakaria Ahmed
+
+Aspiring Full Stack MERN/PERN Developer passionate about building modern scalable web applications.
+
+---
+
+# ⭐ Future Improvements
+
+* Real-time notifications
+* Drag & drop Kanban board
+* File attachments
+* Activity timeline
+* Chat system
+* AI productivity assistant
+
+```
+```
